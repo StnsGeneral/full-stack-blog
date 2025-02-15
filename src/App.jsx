@@ -5,10 +5,7 @@ const App = () => {
     <div>
       {/* NAVBAR */}
       <Navbar />
-      {/* BREADCRUMBS */}
-      {/* INTRODUCTION */}
-      {/* FEATURED POSTS */}
-      {/* POST LIST */}
+      
     </div>
   );
 };
