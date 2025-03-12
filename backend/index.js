@@ -3,8 +3,10 @@ import userRouter from "./routes/user.route.js";
 import commentRouter from "./routes/comment.route.js";
 import postRouter from "./routes/post.route.js";
 import connectDB from "./libraries/connectDB.js";
+import webhookRouter from "./routes/webhook.route.js";
 
 const app = express();
+app.use("/webhooks", webhookRouter);
 app.use(express.json());
 
 // app.get("/test", (req, res) => {
@@ -26,6 +28,6 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(3000, () => {
-  console.log("Server is running!");
   connectDB();
+  console.log("Server is running!");
 });

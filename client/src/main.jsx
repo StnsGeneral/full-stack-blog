@@ -34,16 +34,16 @@ const router = createBrowserRouter([
         element: <SinglePostPage />,
       },
       {
-        path: "/register",
-        element: <RegisterPage />,
-      },
-      {
         path: "/write",
         element: <WritePage />,
       },
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
       },
     ],
   },
