@@ -4,14 +4,34 @@ import commentRouter from "./routes/comment.route.js";
 import postRouter from "./routes/post.route.js";
 import connectDB from "./libraries/connectDB.js";
 import webhookRouter from "./routes/webhook.route.js";
+import { clerkMiddleware, requireAuth } from "@clerk/express";
 
 const app = express();
+app.use(clerkMiddleware());
 app.use("/webhooks", webhookRouter);
 app.use(express.json());
 
 // app.get("/test", (req, res) => {
 //   res.status(200).send("it works!");
 // });
+
+// app.get("/auth-state", (req, res) => {
+//   const authState = req.auth;
+//   res.json(authState);
+// });
+
+//Way to protect routes without using requireAuth()
+// app.get("/protect", (req, res) => {
+//   const { userId } = req.auth;
+//   if (!userId) {
+//     return res.status(401).json("not authenticated");
+//   }
+// res.status(200).json("content");
+// });
+
+app.get("/protect2", requireAuth(), (req, res) => {
+  res.status(200).json("content");
+});
 
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
